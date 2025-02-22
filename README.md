@@ -113,3 +113,8 @@ This app is designed to give you a head start in building your own e-commerce si
 You can easily extend the functionality, enhance the design, and add advanced features such as payments, product filters, or even user authentication. The possibilities are endless! 🌟
 
 Get started now, make it your own, and build something awesome! 💪
+
+<h2> Contact Me: </h2>
+Please feel free to contact me. You can contact me on 
+<h3>primary email: kelkaryatharth@gmail.com</h3>
+<h3>Secondary email: kelkaryatharth1@gmail.com</h3>
