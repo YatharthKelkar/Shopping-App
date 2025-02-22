@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon-Style Shopping</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+        header {
+            background-color: #232f3e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        header input {
+            width: 50%;
+            padding: 8px;
+        }
+        header button {
+            padding: 8px 12px;
+            background-color: #febd69;
+            border: none;
+            cursor: pointer;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .product {
+            background: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+        }
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .product button {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .product button:hover {
+            background-color: #e68a00;
+        }
+        .cart-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .cart-container h2 {
+            text-align: center;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .cart-item button {
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        let cart = [];
+        function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: productPrice });
+            displayCart();
+        }
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            displayCart();
+        }
+        function displayCart() {
+            const cartList = document.getElementById("cart-list");
+            cartList.innerHTML = "";
+            cart.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.classList.add("cart-item");
+                div.innerHTML = `<span>${item.name} - $${item.price}</span> <button onclick="removeFromCart(${index})">Remove</button>`;
+                cartList.appendChild(div);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Amazon Clone</div>
+        <input type="text" placeholder="Search for products...">
+        <button>Search</button>
+    </header>
+    
+    <section class="products">
+        <div class="product" onclick="addToCart('Laptop', 999)">
+            <img src="laptop.jpg" alt="Laptop">
+            <h2>Laptop</h2>
+            <p>$999</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product" onclick="addToCart('Smartphone', 699)">
+            <img src="phone.jpg" alt="Smartphone">
+            <h2>Smartphone</h2>
+            <p>$699</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product" onclick="addToCart('Headphones', 199)">
+            <img src="headphones.jpg" alt="Headphones">
+            <h2>Headphones</h2>
+            <p>$199</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product" onclick="addToCart('Camera', 499)">
+            <img src="camera.jpg" alt="Camera">
+            <h2>Camera</h2>
+            <p>$499</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product" onclick="addToCart('Watch', 149)">
+            <img src="watch.jpg" alt="Watch">
+            <h2>Watch</h2>
+            <p>$149</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product" onclick="addToCart('Tablet', 299)">
+            <img src="tablet.jpg" alt="Tablet">
+            <h2>Tablet</h2>
+            <p>$299</p>
+            <button>Add to Cart</button>
+        </div>
+    </section>
+    
+    <aside class="cart-container">
+        <h2>Shopping Cart</h2>
+        <div id="cart-list"></div>
+    </aside>
+</body>
+</html>
